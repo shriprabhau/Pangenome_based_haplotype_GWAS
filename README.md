@@ -14,6 +14,7 @@ Short-read variant calling against a graph pangenome (minigraph-cactus), haploty
 Run order within a dir follows the table; scripts are SLURM jobs (`sbatch`), `samples.txt` drives the array jobs (line N = array task N).
 
 ## Notes
+- Haplotype clustering (`haplotype_clustering/`) is adapted from the original HaploVar Nextflow pipeline; for details on how to run HaploVar, follow https://github.com/TessaMacNish/HaploVar_nextflow.
 - Paths are placeholders (`/path/to/...`, `<ACCOUNT>`, `<CLUSTER>`); set them before running. `module load` lines and `partition` names are cluster-specific.
 - Graph indexes are copied per array task (`copy_index.sh`) to avoid I/O contention.
 - No data in the repo (see `.gitignore`).
