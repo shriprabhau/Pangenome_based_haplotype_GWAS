@@ -1,0 +1,11 @@
+*.vcf*
+*.gam
+*.pack
+*.gbz
+*.sif
+*.assoc.txt
+*.bimbam
+work/
+.nextflow*
+logs/
+*.png

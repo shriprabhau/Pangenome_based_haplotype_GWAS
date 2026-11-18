@@ -1,0 +1,25 @@
+library(rMVP)
+
+genotype <- attach.big.matrix("mvp.geno.desc")
+phenotype <- read.table("mvp.phe",head=TRUE)
+map <- read.table("mvp.geno.map" , head = TRUE)
+
+imMVP <- MVP(
+    phe=phenotype,          #NA is acceptable in phenotype
+    geno=genotype,
+    map=map,
+    #K=Kinship,             #if you have pre-computed GRM, please keep there open, otherwise rMVP will compute it automatically
+    #CV.GLM=Covariates,     #if you have environmental covariates, please keep all 'CV.*' open
+    #CV.MLM=Covariates,
+    #CV.FarmCPU=Covariates,
+    nPC.GLM=5,              #if you have added PCs into covariates, please keep there closed
+    nPC.MLM=3,              #if you don't want to add PCs as covariates, please comment out the parameter instead of setting it to 0.
+    nPC.FarmCPU=3,
+    maxLine=10000,          #smaller value would reduce the memory cost
+    ncpus=32,
+    vc.method="BRENT",      #only works for MLM
+    method.bin="static",    # "FaST-LMM", "static" (#only works for FarmCPU)
+    threshold=0.05,
+    method=c("GLM", "MLM", "FarmCPU"),
+    out="out_dir"
+)
